@@ -1,3 +1,11 @@
+// A self-dividing number is a number that is divisible by every digit it contains.
+// 
+// For example, 128 is a self-dividing number because 128 % 1 == 0, 128 % 2 == 0, and 128 % 8 == 0.
+// 
+// Also, a self-dividing number is not allowed to contain the digit zero.
+// 
+// Given a lower and upper number bound, output a list of every possible self dividing number, including the bounds if possible.
+
 /**
  * @param {number} left
  * @param {number} right
@@ -7,8 +15,6 @@ var selfDividingNumbers = function(left, right) {
     const cache = {};
     const result = [];
     
-    let timer;
-    console.time(timer);
     for (let i = left; i <= right; i++){
         if(cache.hasOwnProperty(i) && cache[i] === true){
             result.push(i);
@@ -23,8 +29,7 @@ var selfDividingNumbers = function(left, right) {
             }
         }
     }
-    
-    console.timeEnd(timer);
+
     return result;
          
     function isSelfDividing(num) {
@@ -36,3 +41,5 @@ var selfDividingNumbers = function(left, right) {
         return true;
     }
 };
+
+//Creat cache in case this function is called repeated so we won't do the same calculations repeatedly.
